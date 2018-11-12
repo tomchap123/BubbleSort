@@ -443,18 +443,22 @@ int BubbleSort()
 
     for (int i = 1; i < iNodeCount; i++) 
     {
+        list->SetCurrentNode(list->GetFirstNode()); 
+        
         for (int j = 0; j < iNodeCount - i; j++)
         {
             node1 = list->GetCurrentNode();
             list->Next();
             node2 = list->GetCurrentNode();
 
-            if (node1 != nullptr && node2 != nullptr && node1.GetString().compare(node2.GetString()) > 0)
+            if (node1 != nullptr && node2 != nullptr && node1.GetString().compare(node2->GetString()) > 0)
             {
                 strTemp = node2->GetString();
-                list->Delete();
                 list->Previous();
                 list->Insert(strTemp);
+                list->Next();
+                list->Next();
+                list->Delete();
             }
             
         }

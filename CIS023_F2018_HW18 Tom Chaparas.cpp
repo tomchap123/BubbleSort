@@ -453,12 +453,7 @@ int BubbleSort()
 
             if (node1 != nullptr && node2 != nullptr && node1.GetString().compare(node2->GetString()) > 0)
             {
-                strTemp = node2->GetString();
-                list->Previous();
-                list->Insert(strTemp);
-                list->Next();
-                list->Next();
-                list->Delete();
+                list->SwapWithPrevious();
             }
             
         }

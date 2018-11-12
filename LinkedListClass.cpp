@@ -105,6 +105,42 @@ void LinkedListClass::Delete()
 	delete tempNode;
 }
 
+void LinkedListClass::SwapWithPrevious() 
+{
+    NodeClass *prev = currentNode->getPrevNode();
+    if (prev != nullptr) 
+    {
+	if (prev->GetPrevious() != nullptr) 
+	{
+	   prev->GetPrevious()->SetNextNode(currentNode);
+	   currentNode->SetPrevious(prev->GetPrevious());
+	} else {
+	   currentNode->SetPrevious(nullptr);
+	   firstNode = currentNode;
+	}
+	    
+	prev->SetPrevious(currentNode);
+	currentNode->SetNext(prev);    
+	if (currentNode->GetNext() != nullptr) 
+	{
+	   currentNode->GetNext()->SetPrevious(prev);
+	   prev->SetNext(currentNode->GetNext());
+	   
+	} else 
+	{
+	   prev->SetNext(nullptr);
+	   lastNode = prev;
+	}
+    }
+}
+	   
+		
+	    
+		
+	   
+      	   
+	   
+
 void LinkedListClass::Next()
 {
 	currentNode = currentNode->GetNextNode();

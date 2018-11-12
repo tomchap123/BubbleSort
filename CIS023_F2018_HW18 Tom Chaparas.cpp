@@ -433,47 +433,33 @@ int InsertionSort()
 }
 int BubbleSort()
 {
-    NodeClass* tempNode;
+    NodeClass *node1;
+    NodeClass *node2;
     int iNodeCount;
-    int i = 1;
-    string strData1;
-    string strData2;
     string strTemp;
 
-    list->SetCurrentNode(list->GetFirstNode());	//start at first node in the list
-    iNodeCount = 1;
-
-    while (list->GetCurrentNode() != list->GetLastNode())
-    {
-        list->Next();							//advance to the next node
-        iNodeCount++;							//count the node
-    }
+    iNodeCount = list->GetSize();
     list->SetCurrentNode(list->GetFirstNode());	//move to first node in the list
 
-    while (i < iNodeCount)
+    for (int i = 1; i < iNodeCount; i++) 
     {
         for (int j = 0; j < iNodeCount - i; j++)
         {
-            strData1 = list->GetCurrentNode()->GetString();
+            node1 = list->GetCurrentNode();
             list->Next();
-            strData2 = list->GetCurrentNode()->GetString();
+            node2 = list->GetCurrentNode();
 
-            if (strData1.compare(strData2) > 0)
+            if (node1 != nullptr && node2 != nullptr && node1.GetString().compare(node2.GetString()) > 0)
             {
-                strTemp = strData1;
-                strData1 = strData2;
-                strData2 = strTemp;
+                strTemp = node2->GetString();
+                list->Delete();
+                list->Previous();
+                list->Insert(strTemp);
             }
-            else if (strData1.compare(strData2) > 0)
-            {
-                strTemp = strData2;
-                strData2 = strData1;
-                strData1 = strTemp;
-            }
+            
         }
         i++;
     }
-
 
     return iNodeCount;
 }

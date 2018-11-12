@@ -17,7 +17,7 @@ public:
 	void Delete();								// delete a node
 	void Next();								// set current node to next node
 	void Previous(); // set current node to previous node
-	void swapCurrentWithPrevious();
+	void SwapWithPrevious();
 
 	NodeClass* GetFirstNode();					// return 1st node
 	NodeClass* GetLastNode();					// return last node

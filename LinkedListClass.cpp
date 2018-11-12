@@ -131,6 +131,9 @@ void LinkedListClass::SwapWithPrevious()
 	   prev->SetNext(nullptr);
 	   lastNode = prev;
 	}
+	
+	//everythign has been relinked now set current node to prev
+	currentNode = prev;
     }
 }
 	   

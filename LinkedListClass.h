@@ -16,7 +16,8 @@ public:
 	void Insert(string);						// insert node at current location
 	void Delete();								// delete a node
 	void Next();								// set current node to next node
-	void Previous();							// set current node to previous node
+	void Previous(); // set current node to previous node
+	void swapCurrentWithPrevious();
 
 	NodeClass* GetFirstNode();					// return 1st node
 	NodeClass* GetLastNode();					// return last node
